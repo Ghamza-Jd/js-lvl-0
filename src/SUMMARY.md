@@ -10,5 +10,6 @@
   - [Read from Standard Input](./chapter_3/read_from_stdin.md)
 - [Control Flow]()
   - [If and If-Else Statements](./chapter_4/if_stmt.md)
+  - [Loops](./chapter_4/loops.md)
 - [Functions]()
 - [File Input and Output]()
