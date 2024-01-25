@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1/intro_to_programming.html"><strong aria-hidden="true">1.</strong> Introduction to Programming</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapter_1/how_to_read.html"><strong aria-hidden="true">1.1.</strong> How to Read This Book</a></li><li class="chapter-item expanded "><a href="chapter_1/setup.html"><strong aria-hidden="true">1.2.</strong> Setup</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapter_1/win_setup.html"><strong aria-hidden="true">1.2.1.</strong> Windows</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="chapter_2/basic_concepts.html"><strong aria-hidden="true">2.</strong> Basic Concepts</a></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">2.1.</strong> Exercies</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Standard Input and Output</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Control Flow</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Functions</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> File Input and Output</div></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1/intro_to_programming.html"><strong aria-hidden="true">1.</strong> Introduction to Programming</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapter_1/how_to_read.html"><strong aria-hidden="true">1.1.</strong> How to Read This Book</a></li><li class="chapter-item expanded "><a href="chapter_1/setup.html"><strong aria-hidden="true">1.2.</strong> Setup</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapter_1/win_setup.html"><strong aria-hidden="true">1.2.1.</strong> Windows</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="chapter_2/basic_concepts.html"><strong aria-hidden="true">2.</strong> Basic Concepts</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Standard Input and Output</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapter_3/add_to_npm.html"><strong aria-hidden="true">3.1.</strong> NPM and Adding Stdinput-js</a></li><li class="chapter-item expanded "><a href="chapter_3/read_from_stdin.html"><strong aria-hidden="true">3.2.</strong> Read from Standard Input</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Control Flow</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapter_4/if_stmt.html"><strong aria-hidden="true">4.1.</strong> If and If-Else Statements</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Functions</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> File Input and Output</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -415,6 +415,193 @@ let q = &quot;1&quot;;
 console.log(p == q); // true
 console.log(p === 1); // false
 </code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="npm-and-adding-stdinput-js"><a class="header" href="#npm-and-adding-stdinput-js">NPM and Adding Stdinput-js</a></h1>
+<h2 id="npm"><a class="header" href="#npm">NPM</a></h2>
+<p><em>NPM</em> stands for <em>Node Package Manager</em>, its a tool for manage <em>packages</em> (or code) written by us or people online so we don't have to reinvent the wheel.</p>
+<p>We write our configuration inside the file named <code>package.json</code>.</p>
+<p>Here's an example:</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;nodejs&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;Learning JavaScript&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;keywords&quot;: [],
+  &quot;author&quot;: &quot;Hamza Jadid&quot;,
+  &quot;license&quot;: &quot;ISC&quot;,
+  &quot;dependencies&quot;: {
+    &quot;@types/node&quot;: &quot;^18.0.6&quot;,
+    &quot;node-fetch&quot;: &quot;^3.2.6&quot;
+  }
+}
+</code></pre>
+<p>We are going to add the <code>stdinput-js</code> package that enables us to <em>read user input</em>.</p>
+<pre><code class="language-json hl=[11 12]">{
+  &quot;name&quot;: &quot;nodejs&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;Learning JavaScript&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;keywords&quot;: [],
+  &quot;author&quot;: &quot;Hamza Jadid&quot;,
+  &quot;license&quot;: &quot;ISC&quot;,
+  &quot;dependencies&quot;: {
+    &quot;@types/node&quot;: &quot;^18.0.6&quot;,
+    &quot;node-fetch&quot;: &quot;^3.2.6&quot;,
+    &quot;stdinput-js&quot;: &quot;3.0.0&quot;
+  }
+}
+</code></pre>
+<p>And now we can <em><code>import</code></em> code from <code>stdinput-js</code>, an outsider code!</p>
+<pre><code class="language-js">const { stdinput } = require(&quot;stdinput-js&quot;);
+</code></pre>
+<blockquote>
+<p>⚠️ Warning: Becareful what packages you're adding, some might be Malicious.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="read-from-standard-input"><a class="header" href="#read-from-standard-input">Read from Standard Input</a></h1>
+<p>Now that we've added <code>stdinput-js</code> package, we can start using it to read from the user.</p>
+<h2 id="asyncawait"><a class="header" href="#asyncawait">Async/Await</a></h2>
+<h3 id="await"><a class="header" href="#await">Await</a></h3>
+<p><em>Await</em> is the operation used to wait for a <em>Promise</em> and get its fulfillment value. It can only be used inside an <em>async function</em>.</p>
+<blockquote>
+<p>📝 Note: Or at the top level of a module. But it's out of our scope.</p>
+</blockquote>
+<p>Let's see what this means in practice:</p>
+<pre><code class="language-js">const name = await stdinput(&quot;What's your name?&quot;);
+</code></pre>
+<ul>
+<li><code>const name</code> is a constant declaration.</li>
+<li><code>await</code> is waiting for a promise.</li>
+<li><code>stdinput</code> promised us to get an input from the user.</li>
+<li><code>&quot;What's your name?&quot;</code> prompt for the user.</li>
+</ul>
+<p>So the above statement means, <code>stdinput</code> promised <code>name</code> to get the user's input, and <code>name</code> is waiting...</p>
+<h3 id="async"><a class="header" href="#async">Async</a></h3>
+<p><em>Async</em> function is required to use the <code>await</code> keyword, to mark the function as a promise. A function should be a promise if at least one instruction inside of it is a promise.</p>
+<h3 id="a-simple-boilerplate"><a class="header" href="#a-simple-boilerplate">A Simple Boilerplate</a></h3>
+<p>In other langauges we have a <em>function</em> called <code>main</code>.</p>
+<p>Functions are callable units, similar to what we've saw in <code>console.log</code> and <code>stdinput</code>. Another callable example:</p>
+<pre><code class="language-js">console.log(Math.round(10.7));
+console.log(Math.round(10.4));
+</code></pre>
+<p>We will create an <code>async function</code> called main, then call it directly:</p>
+<pre><code class="language-js">async function main() {
+}
+
+main();
+</code></pre>
+<p>Now we add the <code>stdinput-js</code> package and use it.</p>
+<pre><code class="language-js hl=[1 3 4]">const { stdinput } = require(&quot;stdinput-js&quot;);
+
+async function main() {
+    const name = stdinput(&quot;Enter your name: &quot;);
+    console.log(&quot;Hello &quot; + name);
+}
+
+main();
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="if-and-if-else-statements"><a class="header" href="#if-and-if-else-statements">If and If-Else Statements</a></h1>
+<h2 id="if-statement"><a class="header" href="#if-statement">If Statement</a></h2>
+<p>The <code>if</code> statement is used to conditionally execute a block of code. It's syntax is:</p>
+<pre><code class="language-js">if (/* Condition */) { // if beginning
+
+    // Code
+
+} // if ending
+</code></pre>
+<blockquote>
+<p>📝 Note: The <code>/* */</code> is also a form of comments, the computer is going to ignore whatever
+between <code>/*</code> and <code>*/</code></p>
+<pre><code class="language-js">/* Will be ignored */
+console.log(&quot;Not ignored&quot;);
+</code></pre>
+</blockquote>
+<h3 id="example-if"><a class="header" href="#example-if">Example, if</a></h3>
+<p>Problems: Write a program that asks the user to input a number and prints &quot;Even&quot; if the number is even and &quot;Odd&quot; if the number is odd.</p>
+<p>Solution:</p>
+<pre><code class="language-js">const { stdinput } = require(&quot;stdinput-js&quot;);
+
+async function main() {
+    const n = await stdinput(&quot;Enter a number: &quot;);
+
+    if (n % 2 == 0) {
+        console.log(&quot;Even&quot;);
+    }
+
+    if (n % 2 != 0) {
+        console.log(&quot;Odd&quot;);
+    }
+}
+
+main();
+</code></pre>
+<h2 id="if-else-statement"><a class="header" href="#if-else-statement">If-Else Statement</a></h2>
+<p>We can write the same program in a better way by using <code>else</code>. It's syntax is:</p>
+<pre><code class="language-js">if (/* Condition */) {
+    // Code
+} else {
+    // Another Code
+}
+</code></pre>
+<h3 id="example-if-else"><a class="header" href="#example-if-else">Example, if-else</a></h3>
+<p>Problems: Write a program that asks the user to input a number and prints &quot;Even&quot; if the number is even and &quot;Odd&quot; otherwise.</p>
+<p>Solution:</p>
+<pre><code class="language-js">const { stdinput } = require(&quot;stdinput-js&quot;);
+
+async function main() {
+    const n = await stdinput(&quot;Enter a number: &quot;);
+
+    if (n % 2 == 0) {
+        console.log(&quot;Even&quot;);
+    } else {
+        console.log(&quot;Odd&quot;);
+    }
+}
+
+main();
+</code></pre>
+<h2 id="chain-if-else"><a class="header" href="#chain-if-else">Chain If-Else</a></h2>
+<p>We could also chain <code>if</code>s and <code>else</code>s. Syntax:</p>
+<pre><code class="language-js">if (/* Condition 1 */) {
+    // Code
+} else if (/* Condition 2 */) {
+    // Code
+} else if (/* Condition 3 */) {
+    // Code
+} else {
+    // Code
+}
+</code></pre>
+<h3 id="example-chain-if-else"><a class="header" href="#example-chain-if-else">Example, chain if-else</a></h3>
+<p>Problems: Write a program that asks the user to input a number and prints &quot;Zero&quot; if the number is 0, &quot;Positive&quot; if the number is greater than zero, and Negative otherwise.</p>
+<p>Solution:</p>
+<pre><code class="language-js">const { stdinput } = require(&quot;stdinput-js&quot;);
+
+async function main() {
+    const n = await stdinput(&quot;Enter a number: &quot;);
+
+    if (n == 0) {
+        console.log(&quot;Zero&quot;);
+    } else if (n &gt; 0) {
+        console.log(&quot;Positive&quot;);
+    } else {
+        console.log(&quot;Negative&quot;);
+    }
+}
+
+main();
+</code></pre>
+<h2 id="grades-problem"><a class="header" href="#grades-problem">Grades Problem</a></h2>
+<p>Problem:</p>
+<p>a. Write a program that asks the user to input a number and prints to the user the corresponding grade letter:</p>
+<div class="table-wrapper"><table><thead><tr><th>Number</th><th>Grade</th></tr></thead><tbody>
+<tr><td><code>[90, 100]</code></td><td>A+</td></tr>
+<tr><td><code>[80, 90[</code></td><td>A</td></tr>
+<tr><td><code>[70, 80[</code></td><td>B</td></tr>
+<tr><td><code>[60, 70[</code></td><td>C</td></tr>
+<tr><td><code>[50, 60[</code></td><td>D</td></tr>
+<tr><td><code>[0, 50[</code></td><td>F</td></tr>
+</tbody></table>
+</div>
+<p>b. Check the upper and lower bounds, the input should not be less than 0 or greater than 100.</p>
 
                     </main>
 
