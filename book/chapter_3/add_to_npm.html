@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Introduction to Programming - JavaScript Level 0</title>
+        <title>NPM and Adding Stdinput-js - JavaScript Level 0</title>
 
 
         <!-- Custom HTML head -->
@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../chapter_1/intro_to_programming.html" class="active"><strong aria-hidden="true">1.</strong> Introduction to Programming</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter_1/how_to_read.html"><strong aria-hidden="true">1.1.</strong> How to Read This Book</a></li><li class="chapter-item expanded "><a href="../chapter_1/setup.html"><strong aria-hidden="true">1.2.</strong> Setup</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter_1/win_setup.html"><strong aria-hidden="true">1.2.1.</strong> Windows</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../chapter_2/basic_concepts.html"><strong aria-hidden="true">2.</strong> Basic Concepts</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Standard Input and Output</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter_3/add_to_npm.html"><strong aria-hidden="true">3.1.</strong> NPM and Adding Stdinput-js</a></li><li class="chapter-item expanded "><a href="../chapter_3/read_from_stdin.html"><strong aria-hidden="true">3.2.</strong> Read from Standard Input</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Control Flow</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter_4/if_stmt.html"><strong aria-hidden="true">4.1.</strong> If and If-Else Statements</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Functions</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> File Input and Output</div></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../chapter_1/intro_to_programming.html"><strong aria-hidden="true">1.</strong> Introduction to Programming</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter_1/how_to_read.html"><strong aria-hidden="true">1.1.</strong> How to Read This Book</a></li><li class="chapter-item expanded "><a href="../chapter_1/setup.html"><strong aria-hidden="true">1.2.</strong> Setup</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter_1/win_setup.html"><strong aria-hidden="true">1.2.1.</strong> Windows</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../chapter_2/basic_concepts.html"><strong aria-hidden="true">2.</strong> Basic Concepts</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Standard Input and Output</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter_3/add_to_npm.html" class="active"><strong aria-hidden="true">3.1.</strong> NPM and Adding Stdinput-js</a></li><li class="chapter-item expanded "><a href="../chapter_3/read_from_stdin.html"><strong aria-hidden="true">3.2.</strong> Read from Standard Input</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Control Flow</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter_4/if_stmt.html"><strong aria-hidden="true">4.1.</strong> If and If-Else Statements</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Functions</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> File Input and Output</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -147,25 +147,57 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="chapter-1---introduction-to-programming"><a class="header" href="#chapter-1---introduction-to-programming">Chapter 1 - Introduction to Programming</a></h1>
-<p>Programming is more than just a technical skill. It is a mindset that encourages problem-solving, creativity, and critical thinking. By learning programming, you can unlock your potential to innovate, create solutions, and positively impact the world.</p>
-<h2 id="the-digital-age"><a class="header" href="#the-digital-age">The Digital Age</a></h2>
-<p>The digital age is a result of intelligent, slow, and inaccurate humans being able to program fast and accurate but dumb machines.</p>
-<h2 id="what-is-programming"><a class="header" href="#what-is-programming">What is Programming</a></h2>
-<p>Programming is the process of writing instructions for a computer to perform specific tasks. It involves designing, writing, testing, and maintaining the source code of computer programs. Through programming, you can tell the computer what to do, step by step, to solve problems or achieve certain objectives.</p>
-<h2 id="why-learn-to-program"><a class="header" href="#why-learn-to-program">Why Learn to Program</a></h2>
-<p>Learning programming is becoming increasingly important in today's digital age. It allows you to create software, automate tasks, and solve complex problems efficiently. Moreover, programming skills are in high demand across various industries, offering numerous career opportunities. Whether you want to become a software developer, data scientist, web designer, or even a game developer, learning how to program is a valuable asset.</p>
-<h2 id="goals-of-the-training"><a class="header" href="#goals-of-the-training">Goals of the Training</a></h2>
-<p>The training aims to introduce programming concepts and principles. It focuses on developing problem-solving skills and logical thinking abilities, which are essential for any programmer. Additionally, the training seeks to familiarize learners with the fundamentals of JavaScript, a versatile programming language widely used in web development, creating interactive websites, building web applications, and more.</p>
-<h2 id="javascript-and-javascript-use-cases"><a class="header" href="#javascript-and-javascript-use-cases">JavaScript and JavaScript Use Cases</a></h2>
-<p>JavaScript is a powerful and flexible programming language that runs on the web browser. It enables developers to create dynamic, interactive, and responsive websites. With JavaScript, you can add functionality to web pages, manipulate and validate data, create animations, and interact with users in real time. Furthermore, JavaScript is not limited to web development only. It has gained popularity in other areas such as server-side scripting, game development, mobile app development, and even robotics.</p>
+                        <h1 id="npm-and-adding-stdinput-js"><a class="header" href="#npm-and-adding-stdinput-js">NPM and Adding Stdinput-js</a></h1>
+<h2 id="npm"><a class="header" href="#npm">NPM</a></h2>
+<p><em>NPM</em> stands for <em>Node Package Manager</em>, its a tool for manage <em>packages</em> (or code) written by us or people online so we don't have to reinvent the wheel.</p>
+<p>We write our configuration inside the file named <code>package.json</code>.</p>
+<p>Here's an example:</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;nodejs&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;Learning JavaScript&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;keywords&quot;: [],
+  &quot;author&quot;: &quot;Hamza Jadid&quot;,
+  &quot;license&quot;: &quot;ISC&quot;,
+  &quot;dependencies&quot;: {
+    &quot;@types/node&quot;: &quot;^18.0.6&quot;,
+    &quot;node-fetch&quot;: &quot;^3.2.6&quot;
+  }
+}
+</code></pre>
+<p>We are going to add the <code>stdinput-js</code> package that enables us to <em>read user input</em>.</p>
+<pre><code class="language-json hl=[11 12]">{
+  &quot;name&quot;: &quot;nodejs&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;Learning JavaScript&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;keywords&quot;: [],
+  &quot;author&quot;: &quot;Hamza Jadid&quot;,
+  &quot;license&quot;: &quot;ISC&quot;,
+  &quot;dependencies&quot;: {
+    &quot;@types/node&quot;: &quot;^18.0.6&quot;,
+    &quot;node-fetch&quot;: &quot;^3.2.6&quot;,
+    &quot;stdinput-js&quot;: &quot;3.0.0&quot;
+  }
+}
+</code></pre>
+<p>And now we can <em><code>import</code></em> code from <code>stdinput-js</code>, an outsider code!</p>
+<pre><code class="language-js">const { stdinput } = require(&quot;stdinput-js&quot;);
+</code></pre>
+<blockquote>
+<p>⚠️ Warning: Becareful what packages you're adding, some might be Malicious.</p>
+</blockquote>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../chapter_2/basic_concepts.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
 
-                            <a rel="next" href="../chapter_1/how_to_read.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../chapter_3/read_from_stdin.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -175,8 +207,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../chapter_2/basic_concepts.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
 
-                    <a rel="next" href="../chapter_1/how_to_read.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../chapter_3/read_from_stdin.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

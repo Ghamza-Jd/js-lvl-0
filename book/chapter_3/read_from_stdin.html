@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Introduction to Programming - JavaScript Level 0</title>
+        <title>Read from Standard Input - JavaScript Level 0</title>
 
 
         <!-- Custom HTML head -->
@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../chapter_1/intro_to_programming.html" class="active"><strong aria-hidden="true">1.</strong> Introduction to Programming</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter_1/how_to_read.html"><strong aria-hidden="true">1.1.</strong> How to Read This Book</a></li><li class="chapter-item expanded "><a href="../chapter_1/setup.html"><strong aria-hidden="true">1.2.</strong> Setup</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter_1/win_setup.html"><strong aria-hidden="true">1.2.1.</strong> Windows</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../chapter_2/basic_concepts.html"><strong aria-hidden="true">2.</strong> Basic Concepts</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Standard Input and Output</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter_3/add_to_npm.html"><strong aria-hidden="true">3.1.</strong> NPM and Adding Stdinput-js</a></li><li class="chapter-item expanded "><a href="../chapter_3/read_from_stdin.html"><strong aria-hidden="true">3.2.</strong> Read from Standard Input</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Control Flow</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter_4/if_stmt.html"><strong aria-hidden="true">4.1.</strong> If and If-Else Statements</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Functions</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> File Input and Output</div></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../chapter_1/intro_to_programming.html"><strong aria-hidden="true">1.</strong> Introduction to Programming</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter_1/how_to_read.html"><strong aria-hidden="true">1.1.</strong> How to Read This Book</a></li><li class="chapter-item expanded "><a href="../chapter_1/setup.html"><strong aria-hidden="true">1.2.</strong> Setup</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter_1/win_setup.html"><strong aria-hidden="true">1.2.1.</strong> Windows</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../chapter_2/basic_concepts.html"><strong aria-hidden="true">2.</strong> Basic Concepts</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Standard Input and Output</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter_3/add_to_npm.html"><strong aria-hidden="true">3.1.</strong> NPM and Adding Stdinput-js</a></li><li class="chapter-item expanded "><a href="../chapter_3/read_from_stdin.html" class="active"><strong aria-hidden="true">3.2.</strong> Read from Standard Input</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Control Flow</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter_4/if_stmt.html"><strong aria-hidden="true">4.1.</strong> If and If-Else Statements</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Functions</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> File Input and Output</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -147,25 +147,58 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="chapter-1---introduction-to-programming"><a class="header" href="#chapter-1---introduction-to-programming">Chapter 1 - Introduction to Programming</a></h1>
-<p>Programming is more than just a technical skill. It is a mindset that encourages problem-solving, creativity, and critical thinking. By learning programming, you can unlock your potential to innovate, create solutions, and positively impact the world.</p>
-<h2 id="the-digital-age"><a class="header" href="#the-digital-age">The Digital Age</a></h2>
-<p>The digital age is a result of intelligent, slow, and inaccurate humans being able to program fast and accurate but dumb machines.</p>
-<h2 id="what-is-programming"><a class="header" href="#what-is-programming">What is Programming</a></h2>
-<p>Programming is the process of writing instructions for a computer to perform specific tasks. It involves designing, writing, testing, and maintaining the source code of computer programs. Through programming, you can tell the computer what to do, step by step, to solve problems or achieve certain objectives.</p>
-<h2 id="why-learn-to-program"><a class="header" href="#why-learn-to-program">Why Learn to Program</a></h2>
-<p>Learning programming is becoming increasingly important in today's digital age. It allows you to create software, automate tasks, and solve complex problems efficiently. Moreover, programming skills are in high demand across various industries, offering numerous career opportunities. Whether you want to become a software developer, data scientist, web designer, or even a game developer, learning how to program is a valuable asset.</p>
-<h2 id="goals-of-the-training"><a class="header" href="#goals-of-the-training">Goals of the Training</a></h2>
-<p>The training aims to introduce programming concepts and principles. It focuses on developing problem-solving skills and logical thinking abilities, which are essential for any programmer. Additionally, the training seeks to familiarize learners with the fundamentals of JavaScript, a versatile programming language widely used in web development, creating interactive websites, building web applications, and more.</p>
-<h2 id="javascript-and-javascript-use-cases"><a class="header" href="#javascript-and-javascript-use-cases">JavaScript and JavaScript Use Cases</a></h2>
-<p>JavaScript is a powerful and flexible programming language that runs on the web browser. It enables developers to create dynamic, interactive, and responsive websites. With JavaScript, you can add functionality to web pages, manipulate and validate data, create animations, and interact with users in real time. Furthermore, JavaScript is not limited to web development only. It has gained popularity in other areas such as server-side scripting, game development, mobile app development, and even robotics.</p>
+                        <h1 id="read-from-standard-input"><a class="header" href="#read-from-standard-input">Read from Standard Input</a></h1>
+<p>Now that we've added <code>stdinput-js</code> package, we can start using it to read from the user.</p>
+<h2 id="asyncawait"><a class="header" href="#asyncawait">Async/Await</a></h2>
+<h3 id="await"><a class="header" href="#await">Await</a></h3>
+<p><em>Await</em> is the operation used to wait for a <em>Promise</em> and get its fulfillment value. It can only be used inside an <em>async function</em>.</p>
+<blockquote>
+<p>📝 Note: Or at the top level of a module. But it's out of our scope.</p>
+</blockquote>
+<p>Let's see what this means in practice:</p>
+<pre><code class="language-js">const name = await stdinput(&quot;What's your name?&quot;);
+</code></pre>
+<ul>
+<li><code>const name</code> is a constant declaration.</li>
+<li><code>await</code> is waiting for a promise.</li>
+<li><code>stdinput</code> promised us to get an input from the user.</li>
+<li><code>&quot;What's your name?&quot;</code> prompt for the user.</li>
+</ul>
+<p>So the above statement means, <code>stdinput</code> promised <code>name</code> to get the user's input, and <code>name</code> is waiting...</p>
+<h3 id="async"><a class="header" href="#async">Async</a></h3>
+<p><em>Async</em> function is required to use the <code>await</code> keyword, to mark the function as a promise. A function should be a promise if at least one instruction inside of it is a promise.</p>
+<h3 id="a-simple-boilerplate"><a class="header" href="#a-simple-boilerplate">A Simple Boilerplate</a></h3>
+<p>In other langauges we have a <em>function</em> called <code>main</code>.</p>
+<p>Functions are callable units, similar to what we've saw in <code>console.log</code> and <code>stdinput</code>. Another callable example:</p>
+<pre><code class="language-js">console.log(Math.round(10.7));
+console.log(Math.round(10.4));
+</code></pre>
+<p>We will create an <code>async function</code> called main, then call it directly:</p>
+<pre><code class="language-js">async function main() {
+}
+
+main();
+</code></pre>
+<p>Now we add the <code>stdinput-js</code> package and use it.</p>
+<pre><code class="language-js hl=[1 3 4]">const { stdinput } = require(&quot;stdinput-js&quot;);
+
+async function main() {
+    const name = stdinput(&quot;Enter your name: &quot;);
+    console.log(&quot;Hello &quot; + name);
+}
+
+main();
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../chapter_3/add_to_npm.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
 
-                            <a rel="next" href="../chapter_1/how_to_read.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../chapter_4/if_stmt.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -175,8 +208,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../chapter_3/add_to_npm.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
 
-                    <a rel="next" href="../chapter_1/how_to_read.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../chapter_4/if_stmt.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
