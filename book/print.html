@@ -84,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1/intro_to_programming.html"><strong aria-hidden="true">1.</strong> Introduction to Programming</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapter_1/how_to_read.html"><strong aria-hidden="true">1.1.</strong> How to Read This Book</a></li><li class="chapter-item expanded "><a href="chapter_1/setup.html"><strong aria-hidden="true">1.2.</strong> Setup</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapter_1/win_setup.html"><strong aria-hidden="true">1.2.1.</strong> Windows</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="chapter_2/basic_concepts.html"><strong aria-hidden="true">2.</strong> Basic Concepts</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Standard Input and Output</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapter_3/add_to_npm.html"><strong aria-hidden="true">3.1.</strong> NPM and Adding Stdinput-js</a></li><li class="chapter-item expanded "><a href="chapter_3/read_from_stdin.html"><strong aria-hidden="true">3.2.</strong> Read from Standard Input</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Control Flow</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapter_4/if_stmt.html"><strong aria-hidden="true">4.1.</strong> If and If-Else Statements</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Functions</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> File Input and Output</div></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1/intro_to_programming.html"><strong aria-hidden="true">1.</strong> Introduction to Programming</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapter_1/how_to_read.html"><strong aria-hidden="true">1.1.</strong> How to Read This Book</a></li><li class="chapter-item expanded "><a href="chapter_1/setup.html"><strong aria-hidden="true">1.2.</strong> Setup</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapter_1/win_setup.html"><strong aria-hidden="true">1.2.1.</strong> Windows</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="chapter_2/basic_concepts.html"><strong aria-hidden="true">2.</strong> Basic Concepts</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Standard Input and Output</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapter_3/add_to_npm.html"><strong aria-hidden="true">3.1.</strong> NPM and Adding Stdinput-js</a></li><li class="chapter-item expanded "><a href="chapter_3/read_from_stdin.html"><strong aria-hidden="true">3.2.</strong> Read from Standard Input</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Control Flow</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapter_4/if_stmt.html"><strong aria-hidden="true">4.1.</strong> If and If-Else Statements</a></li><li class="chapter-item expanded "><a href="chapter_4/loops.html"><strong aria-hidden="true">4.2.</strong> Loops</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Functions</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> File Input and Output</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -605,6 +605,56 @@ main();
 </tbody></table>
 </div>
 <p>b. Check the upper and lower bounds, the input should not be less than 0 or greater than 100.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="loops"><a class="header" href="#loops">Loops</a></h1>
+<p><em>Loops</em> are a fundamental concept in programming that allow you to execute a block of code repeatedly until a certain condition is met. JavaScript provides several types of loops, but the most commonly used are the <em>for loop</em> and the <em>while loop</em>.</p>
+<h2 id="the-while-loop"><a class="header" href="#the-while-loop">The While Loop</a></h2>
+<p>The `while`` loop is used when you want to repeat a block of code an unknown number of times until a specified condition is met.</p>
+<p>Syntax:</p>
+<pre><code class="language-js">while (condition) {
+  // code to be executed
+}
+</code></pre>
+<p>Example:</p>
+<pre><code class="language-js">let i = 0;
+while (i &lt; 5) {
+  console.log(i); // This will print numbers 0 through 4
+  i++;
+}
+</code></pre>
+<p>Exercise:</p>
+<p>Q: Write a program that <strong>keeps</strong> on asking the user to enter a number, logs the double of the number, and the program only stops when the user enters a negative number.</p>
+<p>A:</p>
+<pre><code class="language-js">let i = 0;
+while (i &gt; 0) {
+    i = await stdinput(&quot;Enter a number: &quot;);
+    console.log(i * 2);
+}
+</code></pre>
+<h2 id="the-for-loop"><a class="header" href="#the-for-loop">The For Loop</a></h2>
+<p>The <code>for</code> loop is often used when you know how many times you want to loop. It has three parts: initialization, condition, and increment/decrement.</p>
+<p>Here's the syntax:</p>
+<pre><code class="language-js">for (initialization; condition; increment/decrement) {
+    // code to be executed
+}
+</code></pre>
+<p>Example:</p>
+<pre><code class="language-js">for (let i = 0; i &lt; 5; i++) {
+  console.log(i); // This will print numbers 0 through 4
+}
+</code></pre>
+<p>Exercise:</p>
+<p>Q: Write a program that asks the user to enter 2 numbers (x and y), then logs the the multiplication of the numbers. You should achive that using loops and addition, multiplication is not allowed.</p>
+<p>A:</p>
+<pre><code class="language-js">let x = await stdinput(&quot;Enter x: &quot;);
+let y = await stdinput(&quot;Enter y: &quot;);
+let sum = 0;
+for (let i = 0; i &lt; x; i++) {
+    sum += y;
+}
+console.log(sum);
+</code></pre>
+<p>Exercies:</p>
+<p>Q: Write a program that asks the user to enter 2 numbers (x and y), then logs the the divition of the numbers. Division operation is not allowed is not allowed.</p>
 
                     </main>
 

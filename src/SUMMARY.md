@@ -11,5 +11,5 @@
 - [Control Flow]()
   - [If and If-Else Statements](./chapter_4/if_stmt.md)
   - [Loops](./chapter_4/loops.md)
-- [Functions]()
-- [File Input and Output]()
+- [Functions](./chapter_5/func.md)
+- [Hangman](./hangman/readme.md)
