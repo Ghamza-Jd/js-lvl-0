@@ -666,63 +666,65 @@ console.log(sum);
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="hangman"><a class="header" href="#hangman">Hangman</a></h1>
 <p>In this chapter we will created a hangman and cover most of the things we've learned in this workshop.</p>
-<h2 id="load-words"><a class="header" href="#load-words">Load words</a></h2>
-<p>The first step in this game is to load the words for our game, we're going to create a function to load the words, so that when we want to change the behaviour of the word loading, like read from a file, from the internet, or even introduce cateogries, we only change this function.</p>
-<pre><code class="language-js">let words = [];
+<pre><code class="language-js">const { stdinput } = require(&quot;stdinput-js&quot;);
 
-function loadWords(category) {
-    // Write code
-    if (category == &quot;fruits&quot;) {
-        words.unshift(&quot;apple&quot;);
-        words.unshift(&quot;banana&quot;);
-        words.unshift(&quot;orange&quot;);
-        words.unshift(&quot;grapes&quot;);
-        words.unshift(&quot;cherries&quot;);
-        words.unshift(&quot;Strawberry&quot;);
-    } else if (category == &quot;pets&quot;) {
-        words.unshift(&quot;cat&quot;);
-        words.unshift(&quot;dog&quot;);
-    }
-}
-</code></pre>
-<h2 id="get-random-word"><a class="header" href="#get-random-word">Get Random Word</a></h2>
-<p>Now after loading the words, we should get a random word our of the list, to do that we're going to use the <code>random</code> function from the <code>Math</code> library.</p>
-<blockquote>
-<p>NOTE: The random function returns a number from 0 to 1. To change the range we can multiply that with the upper bound of our new range, for example if we want to have a random number between 0 and 12, we multiple the result of the random function with 12. So 0 * 12 = 0, 1 * 12 = 12, and 0.5 * 12 = 6. Then we can round the number to get a nature number instead of a decimal one. (using <code>Math.round</code>)</p>
-</blockquote>
-<pre><code class="language-js">let words = [];
+// Uncomment the next line to print more verbos messages
+// const debug = console.log;
+const debug = () =&gt; { };
+
+// Our words pool, we're going to select a random one of this array
+let words = [];
+// The randomly selected word
 let selectedWord;
-
-function loadWords(category) {
-    // Write code
-    if (category == &quot;fruits&quot;) {
-        words.unshift(&quot;apple&quot;);
-        words.unshift(&quot;banana&quot;);
-        words.unshift(&quot;orange&quot;);
-        words.unshift(&quot;grapes&quot;);
-        words.unshift(&quot;cherries&quot;);
-        words.unshift(&quot;Strawberry&quot;);
-    } else if (category == &quot;pets&quot;) {
-        words.unshift(&quot;cat&quot;);
-        words.unshift(&quot;dog&quot;);
-    }
-}
-
-function getRandomWord() {
-    const randomNumber = Math.random();
-    const randomIndex = randomNumber * (words.length - 1);
-    const index = Math.round(randomIndex);
-    selectedWord = words[index];
-}
-</code></pre>
-<h2 id="mask-the-selected-word"><a class="header" href="#mask-the-selected-word">Mask The Selected Word</a></h2>
-<p>Now we want to replace each character in the word with a mask symbol. <code>_</code>, <code>-</code>, <code>*</code>, or <code>$</code>. Anything will work. We're going to use the underscore symbol.</p>
-<pre><code class="language-js">let words = [];
-let selectedWord;
+// The masked version of the selected word
+// e.g: if the selected was &quot;apple&quot; the masked will be &quot;_____&quot;
 let masked;
+// Number of allowed mistakes
+let health = 5;
+// The used characters, to prevent the user of entering the same character twice.
+let usedCharacters = [];
 
+// Run the main function
+main();
+
+// The Hangman game entry point
+async function main() {
+    console.log(&quot;Welcome to Hangman!&quot;);
+    // step 1: Load all words
+    loadWords(&quot;fruits&quot;);
+    // step 2: Select a random word
+    getRandomWord();
+    // step 3: Mask the selected word
+    maskSelectedWord();
+    // step 4: Start the game loop, a loop that repeats until the player either win or lose
+    await gameLoop();
+}
+
+// The main logic
+async function gameLoop() {
+    // Repeat steps 1, 2, and 3. As long as the game is not over.
+    while (!isGameOver()) {
+        // step 1: print the current masked word state
+        console.log(prettify(masked));
+        // step 2: Ask the user for a letter
+        const guess = await stdinput(&quot;Enter a letter: &quot;);
+        // step 3: Verify the guess
+        verifyGuess(guess);
+        debug(selectedWord);
+    }
+    // Print win or lose
+    if (isWinner()) {
+        console.log(&quot;You win!&quot;);
+    } else {
+        console.log(&quot;You lose!&quot;);
+    }
+    // Print the word anyway
+    console.log(&quot;The word was: &quot; + selectedWord);
+}
+
+// Load into the words array, this can be done as follows or reading from a file
+// or get from words over the internet
 function loadWords(category) {
-    // Write code
     if (category == &quot;fruits&quot;) {
         words.unshift(&quot;apple&quot;);
         words.unshift(&quot;banana&quot;);
@@ -736,6 +738,7 @@ function loadWords(category) {
     }
 }
 
+// Get a random word from the words pool
 function getRandomWord() {
     const randomNumber = Math.random();
     const randomIndex = randomNumber * (words.length - 1);
@@ -743,12 +746,80 @@ function getRandomWord() {
     selectedWord = words[index];
 }
 
+// Mask the selected word, e.g: if the selected was &quot;apple&quot; the masked will be &quot;_____&quot;
 function maskSelectedWord() {
-    let m = &quot;&quot;;
+    let m = [];
     for (let i = 0; i &lt; selectedWord.length; i++) {
-        m += &quot;_&quot;;
+        m.unshift(&quot;_&quot;);
     }
-    maskSelectedWord = m;
+    masked = m;
+}
+
+// Unmask all matched letters
+// e.g:
+// - Selected word: banana
+// - Masked: ______
+// - Letter: a
+// - Masked: _a_a_a
+function unmaskLetters(letter) {
+    debug(&quot;Entered the loop&quot;);
+    for (let i = 0; i &lt; selectedWord.length; i++) {
+        debug(&quot;Iteration: &quot; + i);
+        if (selectedWord[i] == letter) {
+            debug(&quot;condition passed&quot;);
+            masked[i] = letter;
+            debug(letter);
+            debug(masked[i]);
+        }
+    }
+    debug(&quot;Exited the loop&quot;);
+}
+
+// Verifies a guess.
+// - Skip if a guess was used before.
+// - If a guess is correct, unmask the guess
+// - If a guess is wrong, subtract 1 from the health
+function verifyGuess(letter) {
+    const l = letter.toLowerCase();
+
+    // check if a character was used before
+    if (usedCharacters.includes(l)) {
+        console.log(&quot;Already used try another letter&quot;);
+        return;
+    }
+    usedCharacters.push(l);
+
+    // check if the provided letter is a correct guess
+    if (selectedWord.includes(l) &amp;&amp; l.length == 1) {
+        unmaskLetters(letter);
+    } else {
+        health--;
+        console.log(&quot;Wrong, current health is: &quot; + health);
+    }
+}
+
+// Checks if winner, by checking if the masked no longer contains any underscores
+function isWinner() {
+    return !masked.includes(&quot;_&quot;);
+}
+
+// a function to make the output pretty
+// it takes an array and returns a more appealing version of it
+// e.g:
+// - Input: ['a', 'p', 'p', 'l', 'e']
+// - Output: apple
+function prettify(arr) {
+    return arr.join(&quot;&quot;);
+}
+
+// Checks if a game is over, by either the healt is less than or equal to zero
+// or the masked word doesn't contains underscores anymore
+function isGameOver() {
+    if (!masked.includes(&quot;_&quot;) || health &lt;= 0) {
+        return true;
+    } else {
+        return false;
+    }
 }
 </code></pre>
 
